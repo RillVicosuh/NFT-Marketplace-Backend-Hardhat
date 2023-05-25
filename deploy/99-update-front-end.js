@@ -4,12 +4,32 @@ const fs = require("fs")
 //This will be the location of where the network mapping json file is in you front end code
 //The network mapping json file will hold the information of the contracts that are deployed
 const frontEndContractsFile = "../nextjs-nft-marketplace/nft-market/constants/networkMapping.json"
+//This will be the location where the abi of the contracts that are deployed are stored in the front end code
+const frontEndAbiLocation = "../next-js-nft-marketplace/nft-market/constants/"
 
+//The contract information and corresponding Abi of a deployed contract are update in the front end code
 module.exports = async function () {
     if (process.env.UPDATE_FRONT_END) {
         console.log("Updating the front end.")
         await updateContractAddresses()
+        await updateAbi()
     }
+}
+
+async function updateAbi() {
+    //Getting the contract objects
+    const nftMarketplace = await ethers.getContract("NftMarketplace")
+    const basicNft = await ethers.getContract("BasicNft")
+    //Storing the abi in the front end
+    fs.writeFileSync(
+        `${frontEndAbiLocation}NftMarketplace.json`,
+        nftMarketplace.interface.format(ethers.utils.FormatTypes.json)
+    )
+
+    fs.writeFileSync(
+        `${frontEndAbiLocation}BasicNft.json`,
+        basicNft.interface.format(ethers.utils.FormatTypes.json)
+    )
 }
 
 async function updateContractAddresses() {
