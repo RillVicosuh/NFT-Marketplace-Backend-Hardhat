@@ -1,3 +1,6 @@
+//yarn hardhat run --network sepolia deploy/99-update-front-end.js
+//or
+//yarn hardhat deploy --tags frontend --network sepolia
 const { ethers, network } = require("hardhat")
 const fs = require("fs")
 
@@ -5,7 +8,7 @@ const fs = require("fs")
 //The network mapping json file will hold the information of the contracts that are deployed
 const frontEndContractsFile = "../nextjs-nft-marketplace/nft-market/constants/networkMapping.json"
 //This will be the location where the abi of the contracts that are deployed are stored in the front end code
-const frontEndAbiLocation = "../next-js-nft-marketplace/nft-market/constants/"
+const frontEndAbiLocation = "../nextjs-nft-marketplace/nft-market/constants/"
 
 //The contract information and corresponding Abi of a deployed contract are update in the front end code
 module.exports = async function () {
