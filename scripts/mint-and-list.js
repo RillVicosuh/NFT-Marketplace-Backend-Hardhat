@@ -1,3 +1,4 @@
+//Run with: yarn hardhat run scripts/mint-and-list.js --network sepolia
 const { ethers, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 

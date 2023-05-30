@@ -1,5 +1,5 @@
 //This is a script that lets you mint from the basicNft contract and does not list it after it is minted
-//Run with: yarn hardhat run script/mint.js --network localhost
+//Run with: yarn hardhat run scripts/mint.js --network localhost
 const { ethers, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 
